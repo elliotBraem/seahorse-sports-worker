@@ -7,7 +7,8 @@
 		"deploy": "wrangler --experimental-json-config deploy",
 		"dev": "wrangler --experimental-json-config dev",
 		"types": "wrangler --experimental-json-config types",
-		"deploy:sql": "bunx wrangler d1 execute seahorse-sports-dev --local --file=schema.sql"
+		"deploy:sql:local": "bunx wrangler d1 execute seahorse-sports-dev --local --file=schema.sql",
+		"deploy:sql:remote": "bunx wrangler d1 execute seahorse-sports-dev --remote --file=schema.sql"
 	},
 	"devDependencies": {
 		"@cloudflare/vitest-pool-workers": "^0.5.2",
