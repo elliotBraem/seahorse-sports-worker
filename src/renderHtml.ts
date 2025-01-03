@@ -1,7 +1,4 @@
-interface LeaderboardEntry {
-  twitter_handle: string;
-  points: number;
-}
+import { LeaderboardEntry } from './types';
 
 export function renderHtml(leaderboard: LeaderboardEntry[]) {
   return `
@@ -24,16 +21,18 @@ export function renderHtml(leaderboard: LeaderboardEntry[]) {
               <thead>
                 <tr>
                   <th>Rank</th>
-                  <th>Twitter Handle</th>
+                  <th>Username</th>
                   <th>Points</th>
+                  <th>Last Updated</th>
                 </tr>
               </thead>
               <tbody>
                 ${leaderboard.map((entry, index) => `
                   <tr>
                     <td>${index + 1}</td>
-                    <td><a href="https://twitter.com/${entry.twitter_handle}" target="_blank">@${entry.twitter_handle}</a></td>
+                    <td>${entry.username}</td>
                     <td>${entry.points}</td>
+                    <td>${new Date(entry.updated_at).toLocaleString()}</td>
                   </tr>
                 `).join('')}
               </tbody>
@@ -63,13 +62,6 @@ export function renderHtml(leaderboard: LeaderboardEntry[]) {
             }
             tr:hover {
               background: #f9f9f9;
-            }
-            a {
-              color: #0E838F;
-              text-decoration: none;
-            }
-            a:hover {
-              text-decoration: underline;
             }
           </style>
         </main>
