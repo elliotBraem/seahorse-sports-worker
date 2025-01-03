@@ -1,19 +1,18 @@
 {
-  "name": "seahorse-sports-worker",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "deploy": "wrangler deploy",
-    "dev": "wrangler dev",
-    "start": "wrangler dev",
-    "test": "vitest",
-    "cf-typegen": "wrangler types"
-  },
-  "devDependencies": {
-    "@cloudflare/vitest-pool-workers": "^0.5.2",
-    "@cloudflare/workers-types": "^4.20241230.0",
-    "typescript": "^5.5.2",
-    "vitest": "2.1.8",
-    "wrangler": "^3.60.3"
-  }
+	"name": "seahorse-sports-worker",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"check": "tsc && wrangler --experimental-json-config deploy --dry-run",
+		"deploy": "wrangler --experimental-json-config deploy",
+		"dev": "wrangler --experimental-json-config dev",
+		"types": "wrangler --experimental-json-config types",
+		"deploy:sql": "bunx wrangler d1 execute seahorse-sports-dev --local --file=schema.sql"
+	},
+	"devDependencies": {
+		"@cloudflare/vitest-pool-workers": "^0.5.2",
+		"@cloudflare/workers-types": "^4.20241230.0",
+		"typescript": "^5.6.3",
+		"wrangler": "^3.97.0"
+	}
 }
